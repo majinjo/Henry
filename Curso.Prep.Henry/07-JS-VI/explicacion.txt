@@ -1,0 +1,85 @@
+// Callbacks :
+//(first calls function), 
+//eso significa que las funciones se pueden pasar como argumentos a otras funciones,
+//retornarlas como resultado de una funcion y guardarlas en variables u otras
+//estructuras de datos.
+//Es decir, cuando pasamos una funcion como argumento a otra funcion, la llamamos callback.
+// ejemplo:
+
+function decirholausuario(usuario) {
+  return 'hola ' + usuario + '!';
+}
+function decirchauusuario(usuario) {
+  return 'chau ' + usuario + '!';
+}
+function crearsaludo(usuario, cb) {
+  return cb(usuario);
+}
+// como vemos a continuacion, la funcion "crearsaludo",
+//recibe una funcion mediante el argumento "cb", que puede ser
+// cualquiera de las 2 funciones declaradas(decirhola/decirchau...), y  lo que hara
+// la funcion "crearsaludo", sera recibir el nuevo argumento "usuario",
+// y ademas de eso, mostrar el valor que devuelve la funcion invocada, osea
+//"callback", (cb).
+console.log(crearsaludo('pepe', decirholausuario)); // hola dan
+console.log(crearsaludo('pepe', decirchauusuario)); // adios dan
+// aprovechando esta propiedad, se le pueden pasar todo tipos de datos
+//por ejemplo :
+console.log (crearsaludo(20, function(a) { return a * 2 + ' es la edad de pepe' }));
+console.log (crearsaludo('pepe', function(a) { return a + ' rompe!' }));
+// otro ejemplo de callback :
+function multiplicar(parametro) {
+  return parametro * 12;
+}
+console.log(crearsaludo(12,multiplicar));
+//---------------------------------------------------------
+//Callbacks y arreglos (vectores/array) ;
+// funcionamiento del for each :
+
+var alumnos = ['a1', 'a2' , 'a3' , 'a4' , 'a5' , 'a6'];
+//sin callbacks
+ for( var i = 0;i < alumnos.length; i++){
+   console.log(alumnos[i]);
+ }
+var i = 0;
+//con callbacks
+alumnos.forEach(function(elemento, indice) {
+   i++;
+  console.log(elemento + ' ' + i);
+})
+//----------------------------------------------------
+//Ejemplo de map :
+var numbers = [1 ,5 ,10 ,15];
+var doble = numbers.map(function(x){
+  return x *2; //siempre debe retornar algo
+})
+console.log(doble); //mostramos lo que devuelve
+
+//sin callbacks
+var nuevoArray =[];
+for (var i = 0; i < alumnos.lenght; i++){
+  nuevoArray.push(alumnos[i].capitalize());
+}
+
+ //con callbacks
+var nuevoAlumnos = alumnos.map(function(alumnos, indice) {
+  return alumnos.capitalize;
+})
+console.log(nuevoAlumnos);
+
+//----------------------------
+//callback reduce :
+var nums = [1 , 2, 3, 4, 5, 6, 7];
+
+//sin callbacks
+var suma = 0;
+for (var i = 0; i <nums.lenght; i++){
+  suma = suma + nums[i];
+}
+console.log(suma);
+// con callbacks
+var sumaReduce = nums.reduce(function(acumulador, elemento) {
+  return acumulador + elemento;
+}, 0);
+
+console.log(sumaReduce);

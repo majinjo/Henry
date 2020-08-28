@@ -1,0 +1,44 @@
+body {
+
+  background: white;
+  color: #323232;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-family: Helvetica neue, roboto;
+}
+
+
+  h1 {
+    color: blue;
+  }
+
+  img {
+  	max-height: 100px;
+  	width: 400px;
+  }
+
+#thirdDiv {
+   height: 600px;
+   width: 500px;
+   background: grey;
+   padding: 50px;
+   border-width: 10px;
+   border-color: white;
+}
+#spanId {
+  margin:50px;
+  font-size: 18px;
+}
+
+#span2 {
+  margin:50px;
+  font-size: 18px;
+}
+
+.divClass {
+	align-self: center;
+}
