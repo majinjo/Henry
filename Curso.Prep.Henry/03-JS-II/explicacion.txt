@@ -1,0 +1,10 @@
+los vectores son una lista de objetos, independientemente
+cual sea el tipo o valor de los mismos, van ordenados por un indice.
+el cual enumera la cantidad de elementos que contiene el arreglo.
+y es mediante dicho indice, que uno puede tener acceso a los elemento
+de un arreglo.
+
+|| , significa que con 1 solo que sea verdadero, 
+todo es verdadero
+
+&& , al revez, si uno es falso, invalida todo.

@@ -1,0 +1,40 @@
+
+Las variables en programación, se emplean para guardar valores en ellas,
+que luego pueden ser modificadas o pueden ir tomando valores distintos.
+De ahí el término "variable", van cambiando.
+
+Una String  es una cadena de caracteres, esto significa que que en ella
+podremos almanecar datos de cualquier tipo, por ejemplo, letras, palabras, símbolos,
+números,etc. , eso sí, todos estos datos en el intérprete o IDE, son leídos como texto,
+asi que si asignamos valores numéricos a una variable de tipo string, los mismos no podrán ser
+operables a nivel matemático.
+
+Una función es un conjunto de sentencias, que toma uno o más valores para poder
+operarlos y devolver un resultado con la palabra reservada "return".
+La finalidad de una función en la programación, es la de ahorrarnos código,
+y poder reutilizarla todas las veces que sean necesarias dentro del programa,
+eso evita que el programa crezca de manera innecesária, y sea legible además de
+fácil de entender.
+
+Un if es un condicional, y como la palabra "condicional" lo indíca,
+para que una operación se realice, primero debe cumplirse una condición,
+por ejemplo :
+
+var int x = 10 ;
+
+if (50 > x) {
+    console.log ("50 es mayor que x");
+}
+
+En el ejemplo, sólo se mostrará el mensaje únicamente si 50 es mayor que la variable x.
+
+Booleanos :
+
+En el álgebra de Boole, se utilizan ceros y unos, (0,1), verdadero falso, este concepto empleado en la programación,
+nos lleva a entender que un valor es boleano, cuando sólo puede ser verdadero o falso.
+(en javascript ,palabras reservadas "true" , "false"), por ejemplo.
+
+var soybooleano = true ;
+
+---------------------------------------------------
+

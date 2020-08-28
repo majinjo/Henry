@@ -1,0 +1,94 @@
+//Protoype (protoptipado) :
+function Despierto(edad, nombre, nivel) {
+  this.edad = edad || 'adulto';
+  this.nombre = nombre || 'borrego';
+  this.nivel = nivel || 'dormidazo';
+}
+var chucho = new Despierto('33','chucho','cristificado',);
+//en javascript todo objeto (el que sea),  tiene su prototipo, 
+//aunque este vacio, ejemplo :
+console.log(chucho.__proto__); //<------------ objeto normal
+console.log(''.__proto__); //<----------- objeto vacio 
+console.log(Array.__proto__);// como todo es objeto, incluso palabras reservadas tiene su proto.
+
+
+//--------------------------------------
+// Ejemplo de como funciona un prototipo :
+
+function Persona (edad) {
+  this.edad = edad;
+} //constructor
+
+Persona.prototype.getEdad = function () {
+  return 'tiene ' + this.edad + ' años';
+} //prototipo persona 
+
+var obj1 = new Persona (92);
+var obj2 = new Persona (62);
+var obj3 = new Persona (42);
+
+console.log (obj1.__proto__);
+//el prototipo de obj1 es getedad, la cual es heredada del 
+// constructor Persona.
+// la sentencia '__proto__' , no hace mas que mostrarnos el protipo de un objeto.
+console.log(obj1.getEdad()); // al mostrar getedad, nos muestra la edad.
+console.log(obj3.getEdad());
+//ademas, se pueden sobreescribir las propiedades de cada objeto, por ejemplo :
+obj3.getEdad = function() {return this.edad /2}
+console.log(obj3.getEdad());
+
+//----------------------------------------------------------
+// Object.create y Pure Prototypal inheritance :
+
+var Persona = {
+  edad: 'Defecto',
+  getEdad: function getEdad(){
+    return this.edad;
+  }
+};
+//En esa modalidad, juan es un objeto vacio, y al igual que en el caso anterior.
+// le añadimos la edad con el prototipo getedad.
+var juan = Object.create(Persona);
+console.log(juan);
+console.log(juan.__proto__);
+juan.edad = 32;
+console.log(juan.getEdad());
+
+//-------------------------------------------------------------
+//ES6 y Clases (Class) :
+
+class Personaje {
+  constructor (nombre,apellido) {
+    this.nombre = nombre,
+    this.apellido = apellido
+  }
+  getNombre () {
+    return this.nombre;
+  }
+  saludar () {
+    return 'Hola ' + this.nombre +' '+ this.apellido ;
+  }
+}
+
+var toni = new Personaje('toni' , 'tralice');
+console.log(toni._proto__);
+console.log(toni.saludar());
+
+// Herencia :
+
+class Empleado extends Personaje {
+  constructor (nombre, apellido, empleo, sueldo) {
+    super(nombre, apellido);
+    this.empleo = empleo;
+    this.sueldo = sueldo;
+  }
+}
+
+var toni = new Empleado ('Toni', 'Tralice', 'Profesor', 100);
+console.log(toni);
+console.log(toni.saludar());
+console.log(toni.getNombre());
+
+String.prototype.reverse = function(){
+  this.nombre
+}

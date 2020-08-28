@@ -1,0 +1,176 @@
+// objetos
+// un objeto es una estructura de datos, compuesta por propiedades,
+//las cuales se asocian entre un nombre y un valor.
+// luego se daran cuenta que un arreglo es un objeto
+// con indices numericos
+
+var pepe = {
+  nombre: 'pepe',
+  apellido: 'pepez',
+  edad: '33',
+  saludar: function (){
+    console.log('hola pepe');
+  },
+  hobbies: ['borreguear', 'pornografia', 'dar pases'],
+}
+
+console.log(pepe, pepe.saludar());
+
+pepe['despedir'] = function () {console.log('chau pepe');}
+
+console.log(pepe); pepe.saludar(); pepe.despedir();
+
+// dot notation :
+
+var i = 'nombre';
+console.log(pepe[i]);
+
+//asignar valores :
+
+pepe.edad = 20;
+console.log(pepe.edad);
+//---------------------------
+// ejemplo de vector de objetos :
+
+var alumnos = [
+  {
+    nombre: 'emi',
+    edad: '23',
+    hobbies: ['correr', 'dormir', 'nadar'],
+    amigos:[
+      {
+        nombre: 'leo',
+      },
+      {
+        nombre: 'martin',
+      }
+    ],
+  },
+  {
+    nombre: 'franco',
+    edad: 21,
+    hobbies: ['futbol', 'golf'],
+    amigos: [
+      {
+        nombre: 'emi',
+      },
+      {
+        nombre: 'jimmy',
+      },
+      {
+        nombre: 'matias',
+      }
+    ],
+  }
+
+];
+
+console.log(alumnos[0]['hobbies'][1]);
+
+//------------------------------------------------
+// keyword  'this'  :
+
+personaje = {
+  nombre: 'toni',
+  saludin: function() {
+    console.log('hola, ' + this.nombre);
+  }
+}
+console.log(personaje.nombre); personaje.saludin();
+
+//------------------------------------
+// this se emplea para que varios objetos puedan compartir un
+// mismo metodo o funcion.
+function saludete () {
+  console.log('hola ' + this.nombre);
+}
+
+var manu = {
+  nombre: 'manu',
+  saludete: saludete,
+}
+
+var martin = {
+  nombre: 'martin',
+  saludete: saludete,
+}
+
+manu.saludete();
+martin.saludete();
+
+//----------------------------
+
+var objeto1 = {
+  edad: 18,
+  getedad: getedad,
+}
+
+var objeto2 = {
+  edad: 21,
+  getedad: getedad,
+}
+
+function getedad() {
+  console.log(this.edad *2);
+}
+
+objeto2.getedad();
+objeto1.getedad();
+
+
+//-----------------------------------
+
+// Object.create y Pure Prototypal inheritance :
+
+var Persona = {
+  edad: 'Defecto',
+  getEdad: function getEdad(){
+    return this.edad;
+  }
+};
+//En esa modalidad, juan es un objeto vacio, y al igual que en el caso anterior.
+// le añadimos la edad con el prototipo getedad.
+var juan = Object.create(Persona);
+console.log(juan);
+console.log(juan.__proto__);
+juan.edad = 32;
+console.log(juan.getEdad());
+
+//-------------------------------------------------------------
+//ES6 y Clases (Class) :
+
+class Personaje {
+  constructor (nombre,apellido) {
+    this.nombre = nombre,
+    this.apellido = apellido
+  }
+  getNombre () {
+    return this.nombre;
+  }
+  saludar () {
+    return 'Hola ' + this.nombre +' '+ this.apellido ;
+  }
+}
+
+var toni = new Personaje('toni' , 'tralice');
+console.log(toni._proto__);
+console.log(toni.saludar());
+
+// Herencia :
+
+class Empleado extends Personaje {
+  constructor (nombre, apellido, empleo, sueldo) {
+    super(nombre, apellido);
+    this.empleo = empleo;
+    this.sueldo = sueldo;
+  }
+}
+
+var toni = new Empleado ('Toni', 'Tralice', 'Profesor', 100);
+console.log(toni);
+console.log(toni.saludar());
+console.log(toni.getNombre());
+
+String.prototype.reverse = function(){
+  this.nombre
+}
